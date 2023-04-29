@@ -2,16 +2,17 @@ name: ci
 on: push
 
 jobs:
-  deploy-staging:
-    name: GAE deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  job_id:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
-      - name: Deploy an App Engine app
-        id: deploy-app
-        uses: google-github-actions/deploy-appengine@v0.1.0
-        with:
-          project: ${{ secrets.gcp_project }}
-          deliverables: app.yaml
-          credentials: ${{ secrets.gcp_credentials }}
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-appengine@v1'
