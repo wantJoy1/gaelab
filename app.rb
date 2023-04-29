@@ -16,6 +16,6 @@
 require "sinatra"
 
 get "/" do
-  "this is a test for deploy"
+  "this is a test for deploy 2"
 end
 # [END gae_standard_quickstart]
