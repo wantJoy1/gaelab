@@ -1,4 +1,5 @@
 name: Deploy an App Engine app
+on: [push]
 id: deploy-app
 uses: google-github-actions/deploy-appengine@v0.1.0
 with:
