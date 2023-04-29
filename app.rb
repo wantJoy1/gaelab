@@ -16,7 +16,6 @@
 require "sinatra"
 
 get "/" do
-  "Hello world!"
-  "Another Hello"
+  "HELLLLLO"
 end
 # [END gae_standard_quickstart]
